@@ -1,21 +1,20 @@
 {
-    "compilerOptions": {
-      "outDir": "./build/",
-      "module": "es6",
-      "allowSyntheticDefaultImports": true,
-      "moduleResolution": "node",
-      "target": "es5",
-      "jsx": "react",
-      "allowJs": true,
-      "alwaysStrict": true,
-      "exactOptionalPropertyTypes": true,
-      "noFallthroughCasesInSwitch": true,
-      "noImplicitAny": true,
-      "noImplicitReturns": true,
-      "strictNullChecks": true,
-      "resolveJsonModule": true,
-    },
-    "include": ["./src/**/*"],
-    "exclude": ["./node_modules/**/*"],
-    "files": ["index.tsx"]
-  }
+  "compilerOptions": {
+    "outDir": "./build/",
+    "module": "es6",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true,
+    "alwaysStrict": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["./node_modules/**/*"]
+}

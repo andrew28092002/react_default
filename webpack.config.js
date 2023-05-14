@@ -2,6 +2,7 @@ const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { TypedCssModulesPlugin } = require("typed-css-modules-webpack-plugin");
 
 const mode =
   process.env.NODE_ENV === "production" ? "production" : "development";
@@ -21,6 +22,12 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),
+    new TypedCssModulesPlugin({
+      globPattern: "src/**/*.scss",
+    }),
+    new TypedCssModulesPlugin({
+      globPattern: "src/**/*.css",
+    }),
   ],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
@@ -33,12 +40,20 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(s[ac]|c)ss$/i,
+        test: /\.(s[ac]|c)ss$/,
+        exclude: /\.module\.(s[ac]|c)ss$/,
         use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader",
-          "sass-loader",
+          { loader: MiniCssExtractPlugin.loader },
+          { loader: "css-loader" },
+          { loader: "sass-loader" },
+        ],
+      },
+      {
+        test: /\.module\.(s[ac]|c)ss$/,
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          { loader: "css-loader", options: { modules: true } },
+          { loader: "sass-loader" },
         ],
       },
       {
