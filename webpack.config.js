@@ -8,7 +8,7 @@ const mode =
 
 module.exports = {
   mode,
-  entry: "./src/index.ts",
+  entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "[name].[hash].js",
@@ -16,7 +16,7 @@ module.exports = {
     clean: true,
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: "./src/index.html" }),
+    new HtmlWebpackPlugin({ template: "./public/index.html" }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
