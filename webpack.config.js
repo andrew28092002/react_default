@@ -8,7 +8,7 @@ const mode =
 
 module.exports = {
   mode,
-  entry: "./src/index.js",
+  entry: "./src/index.ts",
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "[name].[hash].js",
@@ -22,6 +22,9 @@ module.exports = {
       filename: "[name].[contenthash].css",
     }),
   ],
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+  },
   devtool: "source-map",
   devServer: {
     port: 3000,
@@ -55,6 +58,11 @@ module.exports = {
             cacheDirectory: true,
           },
         },
+      },
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader",
+        exclude: /node_modules/,
       },
     ],
   },
